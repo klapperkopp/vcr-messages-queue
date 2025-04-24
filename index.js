@@ -1,9 +1,10 @@
 import express from "express"
-import { INTERNAL_AUTH_KEY, MESSAGES_API_URL, PORT, QUEUE_MAX_INFLIGHT, QUEUE_MSG_PER_SEC, QUEUE_NAME } from "./constants.js"
+import { VONAGE_APP_PKEY, MESSAGES_API_URL, PORT, QUEUE_MAX_INFLIGHT, QUEUE_MSG_PER_SEC, QUEUE_NAME, VONAGE_APP_ID, VONAGE_API_KEY } from "./constants.js"
 import { vcr, Queue } from "@vonage/vcr-sdk"
 import { internalAuth, vonageAuthExists } from "./middleware/auth.js"
 import axios from "axios"
 import crypto from "node:crypto"
+import jwt from "jsonwebtoken"
 
 const app = express()
 app.use(express.json())
@@ -32,8 +33,8 @@ if (!queueApi) {
     console.error("Could not init queue.")
     process.exit(1)
 }
-if (!INTERNAL_AUTH_KEY) {
-    console.error("Please define an INTERNAL_AUTH_KEY env var on the VCR instance.")
+if (!VONAGE_APP_PKEY) {
+    console.error("Please define an VONAGE_APP_PKEY env var on the VCR instance.")
     process.exit(1)
 }
 
@@ -44,7 +45,7 @@ app.get(["/", "/_/metrics", "/_/health"], (req, res) => {
 app.post("/enqueue", vonageAuthExists, async (req, res) => {
     try {
         let temporaryMessageUuid = req.body["client_ref"] || crypto.randomUUID()
-        await queueApi.enqueueSingle(QUEUE_NAME, { originalData: { ...req.body, client_ref: temporaryMessageUuid }, originalHeaders: req.headers, internalAuthKey: INTERNAL_AUTH_KEY, temporaryMessageUuid })
+        await queueApi.enqueueSingle(QUEUE_NAME, { originalData: { ...req.body, client_ref: temporaryMessageUuid }, originalHeaders: req.headers, internalAuthKey: jwt.sign({ appId: VONAGE_APP_ID, apiKey: VONAGE_API_KEY }, VONAGE_APP_PKEY, { expiresIn: "24h", algorithm: "RS256" }), temporaryMessageUuid })
         res.status(200).json({ temporaryMessageUuid })
     } catch (e) {
         console.error("Error queuing up message: ", e?.response?.data || e?.message || e)

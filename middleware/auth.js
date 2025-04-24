@@ -1,4 +1,5 @@
-import { INTERNAL_AUTH_KEY } from "../constants.js"
+import { VONAGE_APP_PKEY } from "../constants.js"
+import jwt from "jsonwebtoken"
 
 export const vonageAuthExists = (req, res, next) => {
     try {
@@ -16,7 +17,7 @@ export const vonageAuthExists = (req, res, next) => {
 export const internalAuth = (req, res, next) => {
     try {
         let { internalAuthKey } = req.body
-        if (internalAuthKey && internalAuthKey === INTERNAL_AUTH_KEY) {
+        if (internalAuthKey && jwt.verify(internalAuthKey, VONAGE_APP_PKEY, { algorithms: ["RS256"] })) {
             next()
         } else {
             res.sendStatus(401)

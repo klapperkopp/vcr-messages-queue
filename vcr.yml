@@ -11,10 +11,6 @@ instance:
         value: 30
       - name: "QUEUE_MSG_PER_SEC"
         value: 30
-      - name: "INTERNAL_AUTH_KEY"
-        secret: "VCR_MESSAGES_QUEUE_INTERNAL_AUTH_KEY"
-    secrets:
-      - VCR_MESSAGES_QUEUE_INTERNAL_AUTH_KEY
     build-script: "./scripts/build.sh"
 debug:
     name: vcr-messages-queue-debug
@@ -25,5 +21,3 @@ debug:
         value: 30
       - name: "QUEUE_MSG_PER_SEC"
         value: 30
-      - name: "INTERNAL_AUTH_KEY"
-        value: "supersecretdebugkey"

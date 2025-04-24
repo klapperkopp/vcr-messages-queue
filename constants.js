@@ -6,7 +6,6 @@ export const VONAGE_APP_ID = process.env.VCR_API_APPLICATION_ID || ""
 export const VONAGE_APP_PKEY = process.env.PRIVATE_KEY || ""
 export const DEBUG_MODE = process.env.VCR_DEBUG == "true" ? true : false
 
-export const INTERNAL_AUTH_KEY = process.env.INTERNAL_AUTH_KEY
 export const MESSAGES_API_URL = process.env.VONAGE_MESSAGES_API_URL || "https://api-eu.vonage.com/v1/messages"
 
 export const QUEUE_NAME = `QUEUE_${DEBUG_MODE ? 'DEBUG_' : ''}${VONAGE_APP_ID.replaceAll("-", "_")}`
