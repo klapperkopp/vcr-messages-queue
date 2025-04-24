@@ -4,6 +4,12 @@ This is an application built on Vonage Cloud runtime that will offer an API endp
 
 To send messages to this instance, you will need to use the instance url under API endpoint /enqueue and your typical payload for Vonage Messages API. That means if you use Messages API today, all you need to do is to deploy this application and then change the API url you are sending messages to to this instance. Nothing else needs changing.
 
+## General Instrutions
+
+This Code can be on-lcikc deployed into your Vonage Account from its [Vonage Code Hub Page](https://developer.vonage.com/en/cloud-runtime/b395d1fe-8c70-4c9b-a6c8-d477e07f74ab_messages-api-rate-limit-extender-queueing).
+
+However, if you intend to deploy thsi yourself, please follow the guides here below.
+
 ## Requirements
 - You must have a [Vonage Developer Account](https://developer.vonage.com/)
 - You must have the [Vonage Cloud Runtime CLI](https://developer.vonage.com/en/vonage-cloud-runtime/getting-started/working-locally) installed and configured
@@ -65,4 +71,4 @@ STATUS: 200
 }
 ```
 
-For other status see Vonage Messages API Reference linked above.
+For other response statuses see Vonage Messages API Reference linked above.
