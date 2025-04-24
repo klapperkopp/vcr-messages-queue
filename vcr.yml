@@ -26,4 +26,4 @@ debug:
       - name: "QUEUE_MSG_PER_SEC"
         value: 30
       - name: "INTERNAL_AUTH_KEY"
-        value: "supersecretkey"
+        value: "supersecretdebugkey"
