@@ -8,7 +8,7 @@ To send messages to this instance, you will need to use the instance url under A
 
 This Code can be on-lcikc deployed into your Vonage Account from its [Vonage Code Hub Page](https://developer.vonage.com/en/cloud-runtime/b395d1fe-8c70-4c9b-a6c8-d477e07f74ab_messages-api-rate-limit-extender-queueing).
 
-However, if you intend to deploy thsi yourself, please follow the guides here below.
+However, if you intend to deploy this yourself, please follow the guides here below.
 
 ## Requirements
 - You must have a [Vonage Developer Account](https://developer.vonage.com/)
