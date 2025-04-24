@@ -1,0 +1,29 @@
+project:
+    name: vcr-messages-queue
+instance:
+    name: dev
+    runtime: nodejs22
+    region: aws.euw1
+    application-id: 32416bb1-626d-4546-ab6d-5b0929a70b2c
+    entrypoint: ["npm", "start"]
+    environment:
+      - name: "QUEUE_MAX_INFLIGHT"
+        value: 30
+      - name: "QUEUE_MSG_PER_SEC"
+        value: 30
+      - name: "INTERNAL_AUTH_KEY"
+        secret: "VCR_MESSAGES_QUEUE_INTERNAL_AUTH_KEY"
+    secrets:
+      - VCR_MESSAGES_QUEUE_INTERNAL_AUTH_KEY
+    build-script: "./scripts/build.sh"
+debug:
+    name: vcr-messages-queue-debug
+    application-id: 13b79015-1b6b-403d-861f-59cf6fa89efc
+    entrypoint: ["npm","run","debug"]
+    environment:
+      - name: "QUEUE_MAX_INFLIGHT"
+        value: 30
+      - name: "QUEUE_MSG_PER_SEC"
+        value: 30
+      - name: "INTERNAL_AUTH_KEY"
+        value: "supersecretkey"

@@ -1,0 +1,46 @@
+{
+    "data": [
+        {
+            "type": "SELECT",
+            "title": "Messages API Endpoint",
+            "description": "The Endpoint of the Vonage Messages API to use. Use the regional endpoints if you would like processing within a specific region.",
+            "name": "VONAGE_MESSAGES_API_URL",
+            "options": [
+                {
+                    "name": "Standard",
+                    "value": "https://api.vonage.com/v1/messages"
+                },
+                {
+                    "name": "Europe",
+                    "value": "https://api-eu.vonage.com/v1/messages"
+                },
+                {
+                    "name": "United States",
+                    "value": "https://api-us.vonage.com/v1/messages"
+                },
+                {
+                    "name": "Asia Pacific",
+                    "value": "https://api-ap.vonage.com/v1/messages"
+                }
+            ],
+            "optional": false,
+            "defaultValue": "https://api-eu.vonage.com/v1/messages"
+        },
+        {
+            "type": "TEXT",
+            "title": "Queue Throughput",
+            "description": "How many messages per second should the queue process. The default is a maximum of 30 messages per second. If you want to raise this limit, talk to your Vonage account manager or email [api.support@vonage.com](mailto:api.support@vonage.com).",
+            "name": "VONAGE_MAX_THROTTLED_MSG_PER_SECOND",
+            "optional": false,
+            "defaultValue": 30
+        },
+        {
+            "type": "TEXT",
+            "title": "Queue Inflight",
+            "description": "How many messages should the queue process at a single time. The default is a maximum of 30 messages at a time.",
+            "name": "VONAGE_MAX_THROTTLED_INFLIGHT",
+            "optional": false,
+            "defaultValue": 30
+        }
+    ]
+}

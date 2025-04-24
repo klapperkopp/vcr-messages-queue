@@ -1,0 +1,20 @@
+{
+  "name": "vcr-messages-queue",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "toni.kuschan@vonage.com",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "debug": "nodemon index.js",
+    "package": "./scripts/create_package.sh",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vonage/vcr-sdk": "^1.4.0",
+    "axios": "^1.8.4",
+    "express": "^5.1.0"
+  }
+}
